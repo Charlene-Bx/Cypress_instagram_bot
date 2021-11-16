@@ -27,7 +27,7 @@
 Cypress.Commands.add('VisitAndAcceptCookies', () => {
   cy.visit('')
   cy.setCookie('ig_lang', 'en')
-  cy.get('div[role=dialog] button').contains('Accept All').click().click()
+  cy.get('div[role=dialog] button').contains('Accept All').click()
   cy.wait(4000)
 })
 
@@ -42,23 +42,27 @@ Cypress.Commands.add('ConnectToMyAccount', () => {
   cy.wait(4000)
 
   cy.get('div[role=dialog] button').contains('Not Now').click()
-  cy.wait(4000)
+  window.ResizeObserver = undefined
 })
 
-Cypress.Commands.add('FindLikeButton', (index) => {
-  cy.get('svg')
-    .then($svg => {
-      console.log('$svg:', Object.values($svg))
-      const allLikes = $svg.filter(el => {
-        const reactObject = {...el}
-        const reactHandlerKey = Object.keys(reactObject).filter( item =>
-          item.indexOf('__reactEventHandlers')>=0
-        )
-        const reactHandler= reactObject[reactHandlerKey[0]]
+Cypress.Commands.add('LikePosts', (times) => {
+  for(let x= 0 ; x <= times ; x++) {
+    if(x <= 6) {
+      cy.get('div > article[role=presentation]').eq(x)
+        .children()
+        .children().eq(2)
+        .children()
+        .children()
+        .find('section').eq(0).children().eq(0).children().click()
+    } else {
+      cy.get('div > article[role=presentation]').eq(4)
+      .children()
+      .children().eq(2)
+      .children()
+      .children()
+      .find('section').eq(0).children().eq(0).children().click()
+    }
 
-        console.log('test', reactHandler?['aria-label'] === "Like" : false)
-        return reactHandler?['aria-label'] === "Like" : false
-      });
-      console.log(allLikes)
-    })
+    cy.scrollTo(0, 1000)
+  }
 })

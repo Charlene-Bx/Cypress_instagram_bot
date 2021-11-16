@@ -22,9 +22,8 @@ Choose your browser and click on "myInstaBot" for makes some magics tricks
 All tests are in /integrations/InstaBot.spec.js
 
 ## TO DO
-The commands 'FindLikeButton'
-For the moment i'm stuck because i can't retreive a concrete array of all "Likes" buttons,
-so... The bot are not really a bot.
+For the moment wed can just likes 7 posts.
+The error 'ResizeObserver loop limit exceeded' made often fail the test at the begining
 ## Instagram don't like bots so, probally this simple one will have a small life duration
 
 

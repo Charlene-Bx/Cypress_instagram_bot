@@ -1,7 +1,7 @@
 {
   "baseUrl": "https://www.instagram.com/",
   "watchForFileChanges": false,
-  "defaultCommandTimeout": 9000,
-  "pageLoadTimeout": 9000,
+  "defaultCommandTimeout": 10000,
+  "pageLoadTimeout": 15000,
   "slowTestThreshold": 15000
 }
